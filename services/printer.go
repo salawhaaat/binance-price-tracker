@@ -1,0 +1,18 @@
+package services
+
+import (
+	"fmt"
+	"time"
+)
+
+func StartResultPrinter(wp *WorkerPool) {
+	go func() {
+		for {
+			time.Sleep(5 * time.Second)
+			wp.mu.Lock()
+			fmt.Println(wp.ResultBuffer.String())
+			fmt.Println("Total requests:", wp.RequestCount)
+			wp.mu.Unlock()
+		}
+	}()
+}
