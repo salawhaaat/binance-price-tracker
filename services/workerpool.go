@@ -33,6 +33,7 @@ func NewWorkerPool(cfg config.Config, client *binance.Client) *WorkerPool {
 		ResultBuffer: bytes.NewBufferString(""), // Buffer to store results
 		mu:           sync.Mutex{},              // Mutex for ResultBuffer
 		countMu:      sync.Mutex{},              // Mutex for RequestCount
+		wg:           sync.WaitGroup{},
 	}
 }
 

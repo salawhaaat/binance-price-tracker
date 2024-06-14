@@ -12,7 +12,7 @@ func StartResultPrinter(wp *WorkerPool) {
 			wp.mu.Lock()
 			fmt.Println(wp.ResultBuffer.String())
 			wp.ResultBuffer.Reset()
-			fmt.Println("Total requests:", wp.RequestCount)
+			fmt.Println("Total requests:", wp.GetRequestsCount())
 			fmt.Println("---------------------------\n")
 			wp.mu.Unlock()
 		}
